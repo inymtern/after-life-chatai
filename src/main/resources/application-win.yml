@@ -1,0 +1,45 @@
+server:
+  port: 9901
+  servlet:
+    context-path: /chatai
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: ${nacos.address}
+        import-check:
+          enabled: false
+      discovery:
+        server-addr: ${nacos.address}
+        register-enabled: true
+    openfeign:
+      client:
+        config:
+          default:
+            connect-timeout: 5000
+            read-timeout: 5000
+  application:
+    name: aiApp
+  config:
+    import: config.yml
+  aop:
+    auto: true
+  data:
+    redis:
+      host: ${redis.host}
+      password: ${redis.password}
+      port: ${redis.port}
+config:
+  gateway:
+    address: http://127.0.0.1:8999
+  default:
+    img: http://127.0.0.1:8801/src/assets/img/head_portrait2.jpg
+  oauth2:
+    client_id: ${oauth2.client.client_id}
+    client_secret: ${oauth2.client.client_secret}
+    server_address: ${oauth2.server.address}
+    redirect_uri: ${oauth2.client.redirect_uri}
+
+logging:
+  level:
+    com.after.life.chatai.remote.BlogOAuthFeignClient: trace
