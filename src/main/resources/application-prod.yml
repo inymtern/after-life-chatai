@@ -32,14 +32,12 @@ spring:
 config:
   gateway:
     address: ${gateway.address}
-  default:
-    img: http://127.0.0.1:8801/src/assets/img/head_portrait2.jpg
   oauth2:
     client_id: ${oauth2.client.client_id}
     client_secret: ${oauth2.client.client_secret}
     server_address: ${oauth2.server.address}
     redirect_uri: ${oauth2.client.redirect_uri}
 
-logging:
-  level:
-    com.after.life.chatai.remote.BlogOAuthFeignClient: trace
+#logging:
+#  level:
+#    com.after.life.chatai.remote.BlogOAuthFeignClient: trace
